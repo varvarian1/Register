@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'main/register.css' %}" />
+    <title>Регистрация</title>
+  </head>
+  <body>
+    {% block content %}
+    <div class="wrap">
+      <h1 class="register-title">Welcome</h1>
+      <form class="register" method="post">
+        <div class="register-switch">
+          <input
+            type="radio"
+            name="sex"
+            value="F"
+            id="sex_f"
+            class="register-switch-input"
+            checked
+          />
+          <label for="sex_f" class="register-switch-label">Female</label>
+          <input
+            type="radio"
+            name="sex"
+            value="M"
+            id="sex_m"
+            class="register-switch-input"
+          />
+          <label for="sex_m" class="register-switch-label">Male</label>
+        </div>
+        {% csrf_token %}
+        {{ form.email }}
+        {{ form.password }}
+        <span>{{ error }}</span>
+        <button type="submit" value="Create Account" class="register-button" >Create Account</button>
+      </form>
+    </div>
+    {% endblock %}
+  </body>
+</html>
