@@ -1,5 +1,5 @@
 from .models import Reger
-from django.forms import ModelForm, EmailField, CharField
+from django.forms import ModelForm, EmailInput, TextInput
 
 class RegerForm(ModelForm):
     class Meta:
@@ -7,12 +7,12 @@ class RegerForm(ModelForm):
         fields = ['email', 'password']
 
         widgets = {
-            "email": EmailField(attrs={
+            "email": EmailInput(attrs={
                 'type': 'email',
                 'class': 'register-input',
                 'placeholder': 'Email address'
             }),
-            "password": CharField(attrs={
+            "password": TextInput(attrs={
                 'type': 'password',
                 'class': 'register-input',
                 'placeholder': 'Password'
